@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "module": "system",
+    "moduleResolution": "classic",
+    "jsx": "react",
+    "sourceMap": true,
+    "declaration": true,
+    "lib": ["es2015", "dom"],
+    "outFile": "./dist/blank-app.js",
+    "rootDir": "./src/",
+    "baseUrl": "./",
+    "types": [],
+    "typeRoots": [
+      "./type",
+    ],
+  },
+  "exclude": [
+    "dist/*"
+  ]
+}

@@ -1,0 +1,7 @@
+dist/*.js
+dist/*.map
+dist/*.d.ts
+node_modules
+.nyc_output
+package-lock.json
+.DS_Store
