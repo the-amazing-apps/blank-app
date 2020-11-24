@@ -228,7 +228,7 @@ var form;
                 return 3;
             }
             else {
-                console.warn('jsonschema-form initialValue unknown type');
+                console.warn('form-tools initialValue unknown type');
                 return "";
             }
         };
@@ -800,9 +800,7 @@ var form;
         var percent = function (v, m) { return min(100, round((max(Number(v), 0) / m) * 100)); };
         var LinearProgress = function (_a) {
             var value = _a.value, progressColor = _a.progressColor, progressBarColor = _a.progressBarColor;
-            var progress = h(MatLinearProgress, { value: value,
-                variant: "determinate"
-            });
+            var progress = h(MatLinearProgress, { value: value, variant: "determinate" });
             if (progressColor && progressBarColor) {
                 return useDelayed(function () { return createMuiTheme({
                     overrides: {
@@ -1435,4 +1433,4 @@ var form;
     form.Breadcrumbs = BreadcrumbsDefault;
 })(form || (form = {})); // namespace form
 /// <reference path="./IEntity.ts"/>
-//# sourceMappingURL=jsonschema-form.js.map
+//# sourceMappingURL=form-tools.js.map

@@ -1,7 +1,6 @@
 
+/// <reference path="./config/index.ts"/>
 /// <reference path="./pages/index.ts"/>
-/// <reference path="./state.ts"/>
-/// <reference path="./theme.ts"/>
 
 namespace blank {
 

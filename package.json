@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.html",
   "scripts": {
+    "start": "npm run serve & npm run open & npm run dev",
+    "open": "open-cli http://127.0.0.1:8080",
     "serve": "http-server",
     "dev": "tsc -w",
     "build": "tsc"
@@ -22,6 +24,7 @@
   "devDependencies": {
     "http-server": "^0.12.3",
     "json-server": "^0.16.3",
+    "open-cli": "^6.0.1",
     "tslint": "^6.1.3",
     "typescript": "^4.0.5"
   }

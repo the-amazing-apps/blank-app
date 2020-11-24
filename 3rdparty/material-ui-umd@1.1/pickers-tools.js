@@ -470,10 +470,10 @@ var pickers;
         components.TimeProvider = function (_a) {
             var _b = _a.children, children = _b === void 0 ? null : _b;
             var _c = useState(null), props = _c[0], setProps = _c[1];
-            var useTime = function (now) {
+            var useTime = function () { return function (now) {
                 if (now === void 0) { now = moment(); }
-                return function () { return new Promise(function (onChange) { return setProps({ now: now, onChange: onChange }); }); };
-            };
+                return new Promise(function (onChange) { return setProps({ now: now, onChange: onChange }); });
+            }; };
             var onChange = useCallback(function (time) {
                 props.onChange(time);
                 setProps(null);
@@ -733,13 +733,17 @@ var pickers;
             var openYearSelection = function () { return setShowYearSelection(true); };
             var openCalendar = function () { return setShowYearSelection(false); };
             var startOfDay = date.startOf('day');
+            var onYearChange = function (date) {
+                setShowYearSelection(false);
+                onChange(date);
+            };
             return (React.createElement("div", { className: classes.container },
                 React.createElement(Toolbar, { className: classes.toolbar },
                     React.createElement(components.ToolbarButton, { type: "subheading", onClick: openYearSelection, selected: showYearSelection, label: date.format('YYYY') }),
                     React.createElement(components.ToolbarButton, { type: "display1", onClick: openCalendar, selected: !showYearSelection, label: date.format('ddd, MMM DD') })),
                 showYearSelection
                     ?
-                        React.createElement(components.YearSelection, { date: startOfDay, onChange: onChange, minDate: moment(minDate), maxDate: moment(maxDate), disableFuture: disableFuture, animateYearScrolling: animateYearScrolling })
+                        React.createElement(components.YearSelection, { date: startOfDay, onChange: onYearChange, minDate: moment(minDate), maxDate: moment(maxDate), disableFuture: disableFuture, animateYearScrolling: animateYearScrolling })
                     :
                         React.createElement(components.Calendar, { date: startOfDay, onChange: onChange, disableFuture: disableFuture })));
         };
@@ -775,10 +779,10 @@ var pickers;
         components.DateProvider = function (_a) {
             var _b = _a.children, children = _b === void 0 ? null : _b;
             var _c = useState(null), props = _c[0], setProps = _c[1];
-            var useDate = function (now) {
+            var useDate = function () { return function (now) {
                 if (now === void 0) { now = moment(); }
-                return function () { return new Promise(function (onChange) { return setProps({ now: now, onChange: onChange }); }); };
-            };
+                return new Promise(function (onChange) { return setProps({ now: now, onChange: onChange }); });
+            }; };
             var onChange = useCallback(function (time) {
                 props.onChange(time);
                 setProps(null);
@@ -809,4 +813,4 @@ var pickers;
     pickers.DateProvider = DateProviderDefault;
     pickers.useDate = useDateDefault;
 })(pickers || (pickers = {})); // namespace pickers
-//# sourceMappingURL=mini-pickers.js.map
+//# sourceMappingURL=pickers-tools.js.map

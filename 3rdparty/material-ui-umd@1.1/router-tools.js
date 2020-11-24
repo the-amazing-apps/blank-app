@@ -163,4 +163,4 @@ var router;
     router.Link = LinkDefault;
     router.useRouter = useRouterDefault;
 })(router || (router = {})); // namespace router
-//# sourceMappingURL=virtual-router.js.map
+//# sourceMappingURL=router-tools.js.map

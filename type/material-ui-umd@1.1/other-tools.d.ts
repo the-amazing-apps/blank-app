@@ -92,7 +92,7 @@ declare namespace other {
     namespace components {
         type useDispatchHook<T = other.state.IReducerAction> = () => [any, (args: T) => any];
         const DispatchContext: React.Context<useDispatchHook<state.IReducerAction<any>>>;
-        const useDispatch: () => [any, (args: state.IReducerAction<any>) => any];
+        const useDispatch: () => any[] | [any, (args: state.IReducerAction<any>) => any];
     }
 }
 declare namespace other {
@@ -102,7 +102,7 @@ declare namespace other {
             children?: React.ReactNode;
             initialState: S;
         }
-        const DispatchProvider: ({ reducer, initialState, children, }: IDispatchProviderProps<any>) => JSX.Element;
+        const DispatchProvider: ({ reducer, initialState, children, }: IDispatchProviderProps) => JSX.Element;
     }
 }
 declare namespace other {
@@ -152,7 +152,7 @@ declare namespace other {
     }
     namespace state {
         const DispatchProvider: ({ reducer, initialState, children, }: components.IDispatchProviderProps<any>) => JSX.Element;
-        const useDispatch: () => [any, (args: IReducerAction<any>) => any];
+        const useDispatch: () => any[] | [any, (args: IReducerAction<any>) => any];
         const connect: components.connectStateFunc;
     }
     namespace fetch {
