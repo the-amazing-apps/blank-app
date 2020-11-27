@@ -84,7 +84,7 @@ declare namespace pickers {
             type?: string;
             value?: number;
             children?: any;
-            onChange?: (value: any, finish: any) => void;
+            onChange?: (value: any) => void;
         }) => JSX.Element;
     }
 }

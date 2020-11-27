@@ -69,6 +69,87 @@ declare namespace other {
     }
 }
 declare namespace other {
+    namespace fetch {
+        enum ResponseType {
+            Basic,
+            Cors,
+            Default,
+            Error,
+            Opaque
+        }
+    }
+}
+declare namespace other {
+    namespace fetch {
+        interface IBody<J = JSON> {
+            bodyUsed: boolean;
+            arrayBuffer(): Promise<ArrayBuffer>;
+            blob(): Promise<Blob>;
+            formData(): Promise<FormData>;
+            json(): Promise<J>;
+            text(): Promise<string>;
+        }
+    }
+}
+declare namespace other {
+    namespace fetch {
+        interface IHeaders {
+            append(name: string, value: string): void;
+            delete(name: string): void;
+            get(name: string): string;
+            getAll(name: string): string[];
+            has(name: string): boolean;
+            set(name: string, value: string): void;
+        }
+    }
+}
+declare namespace other {
+    namespace fetch {
+        interface IFetchOptions {
+            method?: "GET" | "POST" | "DELETE" | "PATCH" | "PUT" | "HEAD" | "OPTIONS" | "CONNECT";
+            headers?: any;
+            body?: any;
+            mode?: "cors" | "no-cors" | "same-origin";
+            credentials?: "omit" | "same-origin" | "include";
+            cache?: "default" | "no-store" | "reload" | "no-cache" | "force-cache" | "only-if-cached";
+            redirect?: "follow" | "error" | "manual";
+            referrer?: string;
+            referrerPolicy?: "no-referrer-when-downgrade" | "origin" | "origin-when-cross-origin" | "unsafe-url";
+            integrity?: any;
+        }
+    }
+}
+declare namespace other {
+    namespace fetch {
+        interface IResponse<J = JSON> extends IBody<J> {
+            error(): IResponse;
+            redirect(url: string, status?: number): IResponse;
+            type: ResponseType;
+            url: string;
+            status: number;
+            ok: boolean;
+            statusText: string;
+            headers: IHeaders;
+            clone(): IResponse;
+        }
+    }
+}
+declare namespace other {
+    namespace i11n {
+        interface ITranslationProviderProps {
+            locale?: ITranslationLocale;
+            children?: React.ReactNode;
+        }
+    }
+}
+declare namespace other {
+    namespace i11n {
+        interface ITranslationLocale {
+            [key: string]: string;
+        }
+    }
+}
+declare namespace other {
     namespace components {
         type useSnackHook = (message: string, obj?: snack.ISnack) => void;
         export const SnackContext: React.Context<useSnackHook>;
@@ -144,6 +225,19 @@ declare namespace other {
     }
 }
 declare namespace other {
+    namespace components {
+        type trFunc = (key: string) => string;
+        export const TranslationContext: React.Context<trFunc>;
+        export const useTr: () => (template: TemplateStringsArray, ...substitutions: any[]) => string;
+        export {};
+    }
+}
+declare namespace other {
+    namespace components {
+        const TranslationProvider: ({ children, locale, }: i11n.ITranslationProviderProps) => JSX.Element;
+    }
+}
+declare namespace other {
     namespace snack {
         const SnackProvider: ({ children, }: {
             children?: any;
@@ -159,70 +253,8 @@ declare namespace other {
         const FetchProvider: ({ searchParams, children, headers, }: components.IFetchProviderProps) => JSX.Element;
         const useFetch: <J = any>() => components.fetchFunc<J>;
     }
-}
-declare namespace other {
-    namespace fetch {
-        interface IBody<J = JSON> {
-            bodyUsed: boolean;
-            arrayBuffer(): Promise<ArrayBuffer>;
-            blob(): Promise<Blob>;
-            formData(): Promise<FormData>;
-            json(): Promise<J>;
-            text(): Promise<string>;
-        }
-    }
-}
-declare namespace other {
-    namespace fetch {
-        interface IFetchOptions {
-            method?: "GET" | "POST" | "DELETE" | "PATCH" | "PUT" | "HEAD" | "OPTIONS" | "CONNECT";
-            headers?: any;
-            body?: any;
-            mode?: "cors" | "no-cors" | "same-origin";
-            credentials?: "omit" | "same-origin" | "include";
-            cache?: "default" | "no-store" | "reload" | "no-cache" | "force-cache" | "only-if-cached";
-            redirect?: "follow" | "error" | "manual";
-            referrer?: string;
-            referrerPolicy?: "no-referrer-when-downgrade" | "origin" | "origin-when-cross-origin" | "unsafe-url";
-            integrity?: any;
-        }
-    }
-}
-declare namespace other {
-    namespace fetch {
-        interface IHeaders {
-            append(name: string, value: string): void;
-            delete(name: string): void;
-            get(name: string): string;
-            getAll(name: string): string[];
-            has(name: string): boolean;
-            set(name: string, value: string): void;
-        }
-    }
-}
-declare namespace other {
-    namespace fetch {
-        interface IResponse<J = JSON> extends IBody<J> {
-            error(): Response;
-            redirect(url: string, status?: number): Response;
-            type: ResponseType;
-            url: string;
-            status: number;
-            ok: boolean;
-            statusText: string;
-            headers: Headers;
-            clone(): Response;
-        }
-    }
-}
-declare namespace other {
-    namespace fetch {
-        enum ResponseType {
-            Basic,
-            Cors,
-            Default,
-            Error,
-            Opaque
-        }
+    namespace i11n {
+        const TranslationProvider: ({ children, locale, }: ITranslationProviderProps) => JSX.Element;
+        const useTr: () => (template: TemplateStringsArray, ...substitutions: any[]) => string;
     }
 }
